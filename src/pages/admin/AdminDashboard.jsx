@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { LogOut, Users, BookOpen, MapPin, Calendar } from 'lucide-react';
 import axios from 'axios';
 import TimetableGrid from '../../components/TimetableGrid';
+import ImageUpload from '../../components/ImageUpload';
 
 const API_URL = 'http://localhost:5000/api';
 
@@ -98,6 +99,40 @@ const AdminDashboard = () => {
               <Card.Body className="d-flex flex-column align-items-center justify-content-center py-5">
                 <Calendar size={48} className="text-info mb-3" />
                 <Card.Title>Generate Timetable</Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        
+        <Row className="mb-5">
+          <Col md={12}>
+            <Card className="glass-card border-0 shadow-sm">
+              <Card.Header className="bg-transparent border-bottom border-secondary py-3">
+                <h4 className="mb-0 fw-bold">System Configuration / Profile</h4>
+              </Card.Header>
+              <Card.Body>
+                <Row className="align-items-center">
+                  <Col lg={6}>
+                    <p className="text-muted mb-4">
+                      Upload your profile image or official documents. Files are securely stored on Cloudinary 
+                      and the links are optimized for fast delivery.
+                    </p>
+                    <ImageUpload 
+                      onUploadSuccess={(url) => {
+                        console.log('File uploaded to:', url);
+                        alert('Cloudinary URL: ' + url);
+                      }} 
+                    />
+                  </Col>
+                  <Col lg={6} className="text-center d-none d-lg-block">
+                    <img 
+                      src="https://res.cloudinary.com/demo/image/upload/v1625215771/sample.jpg" 
+                      alt="Preview placeholder" 
+                      className="img-fluid rounded-4 shadow-lg"
+                      style={{ maxWidth: '300px', opacity: 0.7 }}
+                    />
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
           </Col>
