@@ -5,7 +5,7 @@ import { LogOut } from 'lucide-react';
 import axios from 'axios';
 import TimetableGrid from '../../components/TimetableGrid';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const FacultyDashboard = () => {
   const navigate = useNavigate();
